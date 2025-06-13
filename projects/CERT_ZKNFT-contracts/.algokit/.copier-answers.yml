@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 1.6.1
+_src_path: gh:algorandfoundation/algokit-python-template
+author_email: gnaneshwarr05@gmail.com
+author_name: GOPU-GNANESHWAR-REDDY
+contract_name: cert_zknft
+deployment_language: python
+preset_name: starter
+project_name: CERT_ZKNFT-contracts
+
