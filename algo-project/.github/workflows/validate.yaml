@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  algo-project-contracts-ci:
+    name: Run algo-project-contracts validation
+    uses: ./.github/workflows/algo-project-contracts-ci.yaml
+
+  algo-project-frontend-ci:
+    name: Run algo-project-frontend validation
+    uses: ./.github/workflows/algo-project-frontend-ci.yaml
+

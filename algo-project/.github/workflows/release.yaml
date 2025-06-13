@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  algo-project-contracts-validate:
+    name: Run algo-project-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/algo-project-contracts-ci.yaml
+
+  algo-project-contracts-release:
+    name: Run algo-project-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/algo-project-contracts-cd.yaml
+    needs: algo-project-contracts-validate
+
+  algo-project-frontend-validate:
+    name: Run algo-project-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/algo-project-frontend-ci.yaml
+
+  algo-project-frontend-release:
+    name: Run algo-project-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/algo-project-frontend-cd.yaml
+    needs: algo-project-frontend-validate
