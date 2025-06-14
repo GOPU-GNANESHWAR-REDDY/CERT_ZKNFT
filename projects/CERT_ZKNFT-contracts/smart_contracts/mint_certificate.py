@@ -24,3 +24,9 @@ if __name__ == "__main__":
     with open("artifacts/clear.teal", "w") as f:
         compiled = compileTeal(clear_program(), mode=Mode.Application, version=6)
         f.write(compiled)
+from algopy import ARC4Contract, String, arc4
+
+class CertificateZKNFT(ARC4Contract):
+    @arc4.abimethod
+    def mint_cert(self, student: String, course: String, grade: String, issue_date: String) -> String:
+        return f"{student} completed {course} with {grade} on {issue_date}"

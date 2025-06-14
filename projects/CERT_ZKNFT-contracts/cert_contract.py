@@ -1,11 +1,7 @@
-from beaker.application import Application
-from beaker.decorators import external
-from beaker.lib.storage import GlobalStateValue
-from pyteal import abi
+from algopy import ARC4Contract, String, arc4
 
-class CertificateZKNFT(Application):
-    certificate_count = GlobalStateValue(stack_type=abi.Uint64)
-
-    @external
-    def issue_certificate(self, *, output: abi.String):
-        return output.set("✅ Certificate issued successfully")
+class CertificateZKNFT(ARC4Contract):
+    @arc4.abimethod
+    def mint_cert(self, student: String, course: String) -> String:
+        # For demonstration, just return the student string as in your original logic
+        return student

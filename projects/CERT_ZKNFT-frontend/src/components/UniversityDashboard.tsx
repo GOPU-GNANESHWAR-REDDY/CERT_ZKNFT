@@ -15,10 +15,8 @@ const UniversityDashboard = () => {
   })
 
   const [shareData, setShareData] = useState({
-    student_name: '',
-    student_pub: '',
-    course: '',
-    grade: '',
+    student_id: '',
+    nft_asset_id: '',
   })
 
   const fetchCertificates = async () => {
@@ -30,6 +28,12 @@ const UniversityDashboard = () => {
       console.error("Error fetching certificates:", err)
     }
   }
+  console.log({
+  university_id: UNIVERSITY_ID,
+  university_pub: activeAddress,
+  ...formData,
+})
+
 
   const handleMint = async () => {
     try {
@@ -57,7 +61,6 @@ const UniversityDashboard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           university_id: UNIVERSITY_ID,
-          university_pub: activeAddress,
           ...shareData,
         }),
       })
@@ -114,34 +117,15 @@ const UniversityDashboard = () => {
         <input
           type="text"
           className="input input-bordered w-full mb-2"
-          placeholder="Student Name"
-          onChange={(e) => setShareData({ ...shareData, student_name: e.target.value })}
+          placeholder="Student ID"
+          onChange={(e) => setShareData({ ...shareData, student_id: e.target.value })}
         />
         <input
           type="text"
           className="input input-bordered w-full mb-2"
-          placeholder="Student Public Address"
-          onChange={(e) => setShareData({ ...shareData, student_pub: e.target.value })}
+          placeholder="NFT Asset ID"
+          onChange={(e) => setShareData({ ...shareData, nft_asset_id: e.target.value })}
         />
-        <input
-          type="text"
-          className="input input-bordered w-full mb-2"
-          placeholder="Course"
-          onChange={(e) => setShareData({ ...shareData, course: e.target.value })}
-        />
-        <input
-          type="text"
-          className="input input-bordered w-full mb-2"
-          placeholder="Grade"
-          onChange={(e) => setShareData({ ...shareData, grade: e.target.value })}
-        />
-        <input
-  type="text"
-  value={studentPub}
-  onChange={(e) => setStudentPub(e.target.value)}
-  placeholder="Student Wallet Address"
-/>
-
         <button className="btn btn-accent w-full" onClick={handleShare}>Share Certificate</button>
       </div>
 
