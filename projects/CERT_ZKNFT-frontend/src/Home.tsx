@@ -1,74 +1,35 @@
-// src/components/Home.tsx
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useWallet } from '@txnlab/use-wallet-react'
-import React, { useState } from 'react'
 import ConnectWallet from './components/ConnectWallet'
-import Transact from './components/Transact'
-import AppCalls from './components/AppCalls'
 
-interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
-  const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
-  const [openDemoModal, setOpenDemoModal] = useState<boolean>(false)
-  const [appCallsDemoModal, setAppCallsDemoModal] = useState<boolean>(false)
+const Home = () => {
   const { activeAddress } = useWallet()
-
-  const toggleWalletModal = () => {
-    setOpenWalletModal(!openWalletModal)
-  }
-
-  const toggleDemoModal = () => {
-    setOpenDemoModal(!openDemoModal)
-  }
-
-  const toggleAppCallsModal = () => {
-    setAppCallsDemoModal(!appCallsDemoModal)
-  }
+  const navigate = useNavigate()
 
   return (
-    <div className="hero min-h-screen bg-teal-400">
-      <div className="hero-content text-center rounded-lg p-6 max-w-md bg-white mx-auto">
-        <div className="max-w-md">
-          <h1 className="text-4xl">
-            Welcome to <div className="font-bold">AlgoKit 🙂</div>
-          </h1>
-          <p className="py-6">
-            This starter has been generated using official AlgoKit React template. Refer to the resource below for next steps.
-          </p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-white text-center p-6">
+      <h1 className="text-4xl font-bold text-teal-700 mb-4">Welcome to CERT-ZKNFT</h1>
+      <p className="text-gray-600 mb-6">Decentralized ZK-NFT Certificate Platform</p>
 
-          <div className="grid">
-            <a
-              data-test-id="getting-started"
-              className="btn btn-primary m-2"
-              target="_blank"
-              href="https://github.com/algorandfoundation/algokit-cli"
-            >
-              Getting started
-            </a>
+      <ConnectWallet />
 
-            <div className="divider" />
-            <button data-test-id="connect-wallet" className="btn m-2" onClick={toggleWalletModal}>
-              Wallet Connection
+      {activeAddress && (
+        <div className="mt-8 space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">Select Role</h2>
+          <div className="flex flex-col space-y-2">
+            <button className="btn btn-primary" onClick={() => navigate('/university')}>
+              🎓 University Dashboard
             </button>
-
-            {activeAddress && (
-              <button data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}>
-                Transactions Demo
-              </button>
-            )}
-
-            {activeAddress && (
-              <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
-                Contract Interactions Demo
-              </button>
-            )}
+            <button className="btn btn-secondary" onClick={() => navigate('/student')}>
+              🎒 Student Dashboard
+            </button>
+            <button className="btn btn-accent" onClick={() => navigate('/employer')}>
+              🏢 Employer Dashboard
+            </button>
           </div>
-
-          <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
-          <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />
-          <AppCalls openModal={appCallsDemoModal} setModalState={setAppCallsDemoModal} />
         </div>
-      </div>
+      )}
     </div>
   )
 }

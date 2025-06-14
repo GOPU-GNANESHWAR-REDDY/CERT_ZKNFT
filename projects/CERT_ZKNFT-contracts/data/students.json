@@ -1,0 +1,23 @@
+{
+  "0INUKUOWB37B": {
+    "name": "Gnaneshwar",
+    "certificates": [
+      {
+        "student": "Gnaneshwar",
+        "course": "B.Tech AI/ML",
+        "nft_asset": "NFT_GNANESHWAR_B.TECH AI/ML_mocked",
+        "ipfs": "ipfs://mocked_cid_123456789",
+        "student_id": "0INUKUOWB37B",
+        "qr_token": "./static/qr/0INUKUOWB37B_NFT_GNANESHWAR_B.TECH_AI_ML_mocked.png"
+      },
+      {
+        "student": "Gnaneshwar",
+        "course": "B.Tech AI/ML",
+        "nft_asset": "NFT_GNANESHWAR_B.TECH AI/ML_mocked",
+        "ipfs": "ipfs://mocked_cid_123456789",
+        "student_id": "0INUKUOWB37B",
+        "qr_token": "./static/qr/0INUKUOWB37B_NFT_GNANESHWAR_B.TECH_AI_ML_mocked.png"
+      }
+    ]
+  }
+}
